@@ -52,7 +52,7 @@ jobs:
             -d '{
               "msg_type": "text",
               "content": {
-                "text": "GitHub Pages 部署 '"$status"'！\n项目: ${{ github.repository }}\n分支: ${{ github.ref }}\n提交信息: ${{ github.event.head_commit.message }}\n'"$message"'"
+                "text": "GitHub Pages 部署 '"$status"'！\n项目: ${{ github.repository }}\n分支: ${{ github.ref }}\n提交信息: ${{ github.event.head_commit.message }}\n'"$message"'\n访问地址: ${{ steps.deployment.outputs.page_url }}"
               }
             }' \
             ${{ secrets.FEISHU_MONITOR_DEPLOY_URL }}
