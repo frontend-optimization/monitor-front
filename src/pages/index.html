@@ -38,6 +38,9 @@
     <a href="/WebPerformance/index.html">跳到WebPerformance页面</a> -->
     <img id="loadError" src="" />
 
+    <h2>发送到飞书</h2>
+    <button onclick="sendToFeishu()">给飞书发送一个消息</button>
+
     <script>
       function codeError() {
         let a = {};
@@ -121,6 +124,27 @@
             console.log("图片加载失败");
           };
         }, 1000);
+      }
+
+      function sendToFeishu() {
+        fetch(
+          "https://open.feishu.cn/open-apis/bot/v2/hook/e37c9df3-39e3-4126-bc6a-9cda67c65911",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              msg_type: "text",
+              content: {
+                text: "message form: https://frontend-optimization.github.io/monitor-front/#/",
+              },
+            }),
+          }
+        )
+          .then((response) => response.json())
+          .then((data) => console.log(data))
+          .catch((error) => console.error("Error:", error));
       }
     </script>
   </body>
