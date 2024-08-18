@@ -11,6 +11,7 @@
       }
     </style>
   </head>
+  <script src="https://unpkg.com/@zer0fire/optimize-issue@1.0.7/dist/@zer0fire/optimize-issue.umd.js"></script>
   <body>
     <!-- <script src="./init.js"></script> -->
     <h1>js调试控制台，输出信息调试</h1>
@@ -42,6 +43,16 @@
     <button onclick="sendToFeishu()">给飞书发送一个消息</button>
 
     <script>
+      // TODO: XHR 监控，
+      // TODO: img 加载监控
+      init();
+      function init() {
+        window.traceSdk = new window.traceSdkInit({
+          dsn: "https://huangbowen.cn/api/log",
+          appId: "optimize-issue",
+          debug: true,
+        });
+      }
       function codeError() {
         let a = {};
         a.split("/");
